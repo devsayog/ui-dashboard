@@ -3,7 +3,7 @@ import { MdNotificationsActive } from 'react-icons/md'
 
 const Appbar = () => {
   return (
-    <div className="fixed inset-x-0 top-0 z-40 h-16 border-b border-gray-700 bg-slate-900">
+    <div className="fixed inset-x-0 top-0 z-40 h-16 border-b border-b-gray-700 bg-slate-900">
       <nav className="flex h-full items-center justify-between px-6">
         <button className="focus rounded-full p-2 transition hover:bg-gray-700 lg:hidden">
           <AiOutlineMenu className="text-2xl" aria-hidden="true" />
