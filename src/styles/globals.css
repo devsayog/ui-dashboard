@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[rgb(11,11,25)] text-gray-400 font-normal;
+  }
+}
+@layer components {
+  .focus {
+    @apply focus:outline-none focus-visible:ring-2 ring-pink-600;
+  }
+  .sidebar_link {
+    @apply flex items-center space-x-2 rounded py-2 px-3 transition hover:bg-slate-700 hover:text-gray-300 focus;
+  }
+}
