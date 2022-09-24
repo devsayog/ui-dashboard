@@ -1,16 +1,21 @@
+import OverviewCard from '@/components/common/OverviewCard'
+import { overviewCards } from '@/data/data'
+
 const Home = () => {
   return (
-    <>
-      <section className="text-gray-600">
-        <div className="container mx-auto px-5 py-24">
-          <h1 className="mb-20 text-center text-2xl font-medium text-gray-900 sm:text-3xl">
-            Hello world
-            <br className="hidden sm:block" />
-            from nextjs
-          </h1>
-        </div>
-      </section>
-    </>
+    <section aria-labelledby="page-title" className="section">
+      <h1 id="page-title" className="heading1">
+        Welcome back, John
+      </h1>
+      <p className="paragraph text-gray-500">
+        Here&apos;s current status of your eStore.
+      </p>
+      <div className="my-3 grid gap-4 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
+        {overviewCards.map((cardData) => (
+          <OverviewCard {...cardData} key={cardData.title} />
+        ))}
+      </div>
+    </section>
   )
 }
 

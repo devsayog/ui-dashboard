@@ -12,7 +12,7 @@ const Layout = ({ children }: ILayoutProps) => {
       <Appbar />
       <div className="flex">
         <Sidebar />
-        <main className="mt-14">{children}</main>
+        <main className="mt-14 w-full">{children}</main>
       </div>
     </>
   )
