@@ -1,12 +1,31 @@
 import Link from 'next/link'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { RiDashboard2Fill } from 'react-icons/ri'
 
 import { navLinks } from '@/data/data'
 
-const Sidenav = () => {
+interface ISidenavProps {
+  drawer?: boolean
+  close?: () => void
+}
+const Sidenav = ({ drawer, close }: ISidenavProps) => {
   return (
     <div className="h-screen overflow-y-auto">
       <div aria-label="sidebar" className="py-8 px-3">
+        {drawer && (
+          <div className="mb-2 flex justify-end">
+            <button
+              onClick={close}
+              className="focus ml-1 rounded-full p-1 transition-transform hover:scale-105"
+            >
+              <AiFillCloseCircle
+                className="rounded-full bg-slate-900 text-4xl text-red-300"
+                aria-hidden="true"
+              />
+              <span className="sr-only">close drawer menu</span>
+            </button>
+          </div>
+        )}
         <Link href="/">
           <a className="sidebar_link">
             <RiDashboard2Fill
