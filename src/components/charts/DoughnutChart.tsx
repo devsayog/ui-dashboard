@@ -9,13 +9,15 @@ interface IDoughnutChartProps {
     unknown
   >
   showLegend: boolean
+  cutout: number
 }
-const DoughnutChart = ({ data, showLegend }: IDoughnutChartProps) => {
+const DoughnutChart = ({ data, showLegend, cutout }: IDoughnutChartProps) => {
   return (
     <Doughnut
       options={{
         responsive: true,
-        cutout: 80,
+        maintainAspectRatio: true,
+        cutout,
         layout: {
           padding: 0,
         },

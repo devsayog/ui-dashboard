@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[rgb(11,11,25)] text-gray-400 font-normal overflow-x-hidden;
+    @apply bg-[rgb(11,11,25)] text-gray-400 font-normal overflow-x-auto w-full;
   }
 }
 @layer components {
@@ -22,5 +22,11 @@
   }
   .heading1 {
     @apply text-2xl font-medium tracking-wide md:text-3xl xl:text-4xl;
+  }
+  .chart-header {
+    @apply text-base font-bold capitalize tracking-wider text-gray-300 md:text-lg;
+  }
+  .chart-wrapper {
+    @apply rounded-md bg-slate-900 p-2;
   }
 }

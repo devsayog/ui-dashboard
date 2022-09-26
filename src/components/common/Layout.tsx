@@ -8,13 +8,14 @@ interface ILayoutProps {
 }
 const Layout = ({ children }: ILayoutProps) => {
   return (
-    <>
+    <div>
       <Appbar />
-      <div className="flex">
+      {/* <div className="grid w-full grid-cols-[auto,1fr]"> */}
+      <div className="lg:grid lg:grid-cols-[auto,minmax(0,1fr)]">
         <Sidebar />
         <main className="mt-14 w-full">{children}</main>
       </div>
-    </>
+    </div>
   )
 }
 
