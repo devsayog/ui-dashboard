@@ -21,7 +21,10 @@
     @apply text-sm md:text-base;
   }
   .heading1 {
-    @apply text-2xl font-medium tracking-wide md:text-3xl xl:text-4xl;
+    @apply text-2xl font-medium tracking-wide md:text-3xl xl:text-4xl capitalize;
+  }
+  .heading2 {
+    @apply text-xl font-medium tracking-wide md:text-2xl xl:text-3xl capitalize;
   }
   .chart-header {
     @apply text-base font-bold capitalize tracking-wider text-gray-300 md:text-lg;
@@ -29,4 +32,24 @@
   .chart-wrapper {
     @apply rounded-md bg-slate-900 p-2;
   }
+  .spacing {
+    @apply my-4 md:my-8 xl:my-12;
+  }
+  .table {
+    @apply min-w-full divide-y divide-gray-700 text-left;
+  }
+  .table__head {
+    @apply bg-gray-800 text-sm font-bold tracking-wider text-gray-300;
+  }
+  .table__body {
+    @apply divide-y divide-gray-800;
+  }
+  .table__row-body {
+    @apply text-sm text-gray-300 transition even:bg-slate-800/40 hover:bg-slate-800/70 md:text-sm;
+  }
 }
+/*
+https://dribbble.com/shots/18589528-Salence-E-commerce-Analytics-Web-App
+https://material-kit-react.devias.io/
+https://dashboard-shoppy.netlify.app/ecommerce
+*/
