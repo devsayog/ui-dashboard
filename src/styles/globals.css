@@ -15,7 +15,7 @@
     @apply flex items-center space-x-2 rounded py-2 px-3 transition hover:bg-slate-700 hover:text-gray-300 focus;
   }
   .section {
-    @apply px-2 my-4 sm:my-6 md:px-4 xl:px-6 lg:my-10 2xl:my-12;
+    @apply px-2 py-8 sm:py-6 md:px-4 xl:px-6 lg:py-10 2xl:py-12;
   }
   .paragraph {
     @apply text-sm md:text-base;
