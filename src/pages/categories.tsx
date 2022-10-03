@@ -11,13 +11,15 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 import Image from 'next/image'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   AiFillDelete,
   AiOutlineArrowDown,
   AiOutlineArrowUp,
 } from 'react-icons/ai'
 
+import CategoryForm from '@/components/category/CategoryForm'
+import AppDialog from '@/components/common/AppDialog'
 import DebouncedInput from '@/components/common/DebouncedInput'
 import IndeterminateCheckbox from '@/components/common/IndeterminateCheckbox'
 import TableContainer from '@/components/common/TableContainer'
@@ -82,7 +84,11 @@ const Categories = () => {
       },
       {
         header: 'Action',
-        cell: () => <button className="px-3 py-1">Edit</button>,
+        cell: (props) => (
+          <AppDialog edit title="Edit">
+            <CategoryForm edit initialState={props.row.original} />
+          </AppDialog>
+        ),
       },
     ],
     [],
@@ -107,9 +113,14 @@ const Categories = () => {
   return (
     <section className="section" aria-labelledby="page-title">
       <div className="mx-auto max-w-md">
-        <h2 className="heading2 mb-4" id="page-title">
-          Categories
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="heading2 mb-4" id="page-title">
+            Categories
+          </h2>
+          <AppDialog title="Add new Category">
+            <CategoryForm />
+          </AppDialog>
+        </div>
         <TableContainer>
           <div className="flex justify-between px-3 py-1">
             <div className="flex">
@@ -139,7 +150,6 @@ const Categories = () => {
               placeholder="Search"
             />
           </div>
-
           <table className="table">
             <thead className="table__head">
               {getHeaderGroups().map((headerGroup) => (
