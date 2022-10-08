@@ -7,6 +7,7 @@ interface InputProps {
   type: HTMLInputTypeAttribute
   placeholder?: string
   error: FieldError | undefined
+  step?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -96,3 +97,45 @@ export const SumbitBtn = ({ text }: { text: string }) => {
     </button>
   )
 }
+interface SelectInputProps {
+  label: string
+  error: FieldError | undefined
+  options: string[]
+}
+export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
+  function Select({ label, error, options, ...props }, ref) {
+    return (
+      <>
+        <label className="my-2 block font-medium capitalize" htmlFor="select">
+          {label}
+        </label>
+        <select
+          aria-describedby={`${label}-error`}
+          ref={ref}
+          id={label}
+          className="block w-full appearance-none rounded-md border-gray-500 bg-gray-700/10 p-2 py-1.5 text-gray-300"
+          {...props}
+        >
+          {options.map((option) => (
+            <option
+              className="appearance-none bg-gray-700 capitalize text-gray-300"
+              value={option}
+              key={option}
+            >
+              {option}
+            </option>
+          ))}
+        </select>
+        {error?.message && (
+          <p
+            role="alert"
+            id={`${label}-error`}
+            className="mt-1 text-sm tracking-wide text-red-400"
+          >
+            {error?.message}
+          </p>
+        )}
+      </>
+    )
+  },
+)
