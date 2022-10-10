@@ -13,8 +13,9 @@ interface IAppDialogProps {
   title: string
   children: ReactNode
   edit?: boolean
+  order?: boolean
 }
-const AppDialog = ({ title, children, edit }: IAppDialogProps) => {
+const AppDialog = ({ title, children, edit, order }: IAppDialogProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
@@ -42,7 +43,7 @@ const AppDialog = ({ title, children, edit }: IAppDialogProps) => {
         {edit ? (
           <>
             <AiFillEdit aria-hidden="true" className="text-2xl" />
-            <p className="sr-only">Edit</p>
+            <p className="sr-only">{order ? 'Order Details' : 'Edit'}</p>
           </>
         ) : (
           <>
@@ -78,7 +79,7 @@ const AppDialog = ({ title, children, edit }: IAppDialogProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-75"
               >
-                <Dialog.Panel className="w-full max-w-md divide-y divide-gray-700 overflow-hidden rounded-2xl bg-slate-900 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-2xl divide-y divide-gray-700 overflow-hidden rounded-2xl bg-slate-900 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between">
                     <Dialog.Title
                       as="h3"

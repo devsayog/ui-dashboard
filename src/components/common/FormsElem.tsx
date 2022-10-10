@@ -8,6 +8,7 @@ interface InputProps {
   placeholder?: string
   error: FieldError | undefined
   step?: string
+  disabled?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -22,7 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       <input
         aria-invalid={error?.message ? true : undefined}
         aria-describedby={`${label}-error`}
-        className="w-full rounded-md border-gray-500 bg-gray-700/10 py-1.5 px-2 text-gray-300"
+        className="w-full rounded-md border-gray-500 bg-gray-700/10 py-1.5 px-2 text-gray-300 disabled:opacity-40"
         id={label}
         type={type}
         ref={ref}
@@ -113,7 +114,7 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
           aria-describedby={`${label}-error`}
           ref={ref}
           id={label}
-          className="block w-full appearance-none rounded-md border-gray-500 bg-gray-700/10 p-2 py-1.5 text-gray-300"
+          className="block w-full appearance-none rounded-md border-gray-500 bg-gray-700/10 p-2 py-1.5 capitalize text-gray-300"
           {...props}
         >
           {options.map((option) => (

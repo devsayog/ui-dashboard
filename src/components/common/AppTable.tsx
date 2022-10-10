@@ -50,8 +50,13 @@ const PaginationButton = ({
 type AppTableProps<T> = {
   columns: ColumnDef<T, any>[]
   displayData: T[]
+  hideDeleteBtn?: boolean
 }
-const AppTable = <T,>({ columns, displayData }: AppTableProps<T>) => {
+const AppTable = <T,>({
+  columns,
+  displayData,
+  hideDeleteBtn,
+}: AppTableProps<T>) => {
   const [data, setData] = useState<T[]>(displayData)
   const [sorting, setSorting] = useState<SortingState>([])
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({})
@@ -88,24 +93,26 @@ const AppTable = <T,>({ columns, displayData }: AppTableProps<T>) => {
     <TableContainer>
       <div className="flex justify-between px-3 py-1">
         <div className="flex">
-          <button
-            disabled={!getSelectedRowModel().rows.length}
-            className="focus flex h-9 w-9 items-center justify-center rounded-full p-1 transition hover:bg-red-200 disabled:opacity-60"
-            onClick={() =>
-              deleteSelectedRows({
-                rowSelection,
-                data,
-                setData,
-                setRowSelection,
-              })
-            }
-          >
-            <p className="sr-only">Delete Selected Rows</p>
-            <AiFillDelete
-              aria-hidden="true"
-              className="text-2xl text-red-500"
-            />
-          </button>
+          {!hideDeleteBtn && (
+            <button
+              disabled={!getSelectedRowModel().rows.length}
+              className="focus flex h-9 w-9 items-center justify-center rounded-full p-1 transition hover:bg-red-200 disabled:opacity-60"
+              onClick={() =>
+                deleteSelectedRows({
+                  rowSelection,
+                  data,
+                  setData,
+                  setRowSelection,
+                })
+              }
+            >
+              <p className="sr-only">Delete Selected Rows</p>
+              <AiFillDelete
+                aria-hidden="true"
+                className="text-2xl text-red-500"
+              />
+            </button>
+          )}
         </div>
         <DebouncedInput
           debounce={400}

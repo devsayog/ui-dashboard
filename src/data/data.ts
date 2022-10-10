@@ -14,6 +14,584 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { getRandomNumber } from '@/utils/getRandomNumber'
 
+export const ordersData = [
+  {
+    id: uuidv4(),
+    name: 'es-1',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'pending',
+    date: 'Sun Oct 29 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-2',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 29 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-3',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'canceled',
+    date: 'Sun Oct 28 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-4',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'rejected',
+    date: 'Sun Oct 28 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-5',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'pending',
+    date: 'Sun Oct 28 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-6',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 27 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-7',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'canceled',
+    date: 'Sun Oct 26 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-8',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'rejected',
+    date: 'Sun Oct 26 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-9',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'pending',
+    date: 'Sun Oct 25 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-10',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 25 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-11',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'canceled',
+    date: 'Sun Oct 25 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-12',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'rejected',
+    date: 'Sun Oct 24 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-13',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'pending',
+    date: 'Sun Oct 22 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-14',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 22 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-15',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'canceled',
+    date: 'Sun Oct 20 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-16',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'rejected',
+    date: 'Sun Oct 19 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-17',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 15 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-18',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 15 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-19',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 15 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-20',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 15 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-21',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 15 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-22',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 14 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: 'es-23',
+    totalPrice: 500,
+    customer: {
+      name: 'Kübra Tazegül',
+      address: 'Balıkesir, Bursa, Abanoz Sk',
+    },
+    status: 'complete',
+    date: 'Sun Oct 14 2022 09:08',
+    products: [
+      {
+        image: 'https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg',
+        title: 'DANVOUY Womens T Shirt Casual Cotton Short',
+        price: 12.99,
+        qty: 2,
+      },
+      {
+        image: 'https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg',
+        title: "MBJ Women's Solid Short Sleeve Boat Neck V ",
+        price: 9.85,
+        qty: 2,
+      },
+    ],
+  },
+]
+
 export const customers = [
   {
     address: 'Balıkesir, Bursa, Abanoz Sk',
