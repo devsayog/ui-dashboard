@@ -1,6 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import Image from 'next/image'
 import { useMemo } from 'react'
+import { AiFillEdit, AiOutlinePlus } from 'react-icons/ai'
 
 import AppDialog from '@/components/common/AppDialog'
 import AppTable from '@/components/common/AppTable'
@@ -80,7 +81,16 @@ const Products = () => {
       {
         header: 'Action',
         cell: (props) => (
-          <AppDialog edit title="Edit">
+          <AppDialog
+            edit
+            title={`Edit:- ${props.row.original.title}`}
+            trigger={
+              <>
+                <AiFillEdit aria-hidden="true" className="text-2xl" />
+                <p className="sr-only">Edit {props.row.original.title}</p>
+              </>
+            }
+          >
             <ProductForm edit initialState={props.row.original} />
           </AppDialog>
         ),
@@ -95,7 +105,17 @@ const Products = () => {
           <h2 className="heading2 mb-4" id="page-title">
             Products
           </h2>
-          <AppDialog title="Add new Product">
+          <AppDialog
+            title="Add new Category"
+            trigger={
+              <>
+                <p className="flex items-center capitalize">
+                  new product
+                  <AiOutlinePlus aria-hidden="true" className="ml-1 text-xl" />
+                </p>
+              </>
+            }
+          >
             <ProductForm />
           </AppDialog>
         </div>

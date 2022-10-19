@@ -7,15 +7,15 @@ import React, {
   isValidElement,
   useState,
 } from 'react'
-import { AiFillEdit, AiOutlineClose, AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai'
 
 interface IAppDialogProps {
   title: string
   children: ReactNode
+  trigger?: JSX.Element
   edit?: boolean
-  order?: boolean
 }
-const AppDialog = ({ title, children, edit, order }: IAppDialogProps) => {
+const AppDialog = ({ title, children, edit, trigger }: IAppDialogProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
@@ -40,19 +40,7 @@ const AppDialog = ({ title, children, edit, order }: IAppDialogProps) => {
         } focus bg-blue-600 text-gray-300 transition hover:scale-105 hover:text-gray-200`}
         onClick={openModal}
       >
-        {edit ? (
-          <>
-            <AiFillEdit aria-hidden="true" className="text-2xl" />
-            <p className="sr-only">{order ? 'Order Details' : 'Edit'}</p>
-          </>
-        ) : (
-          <>
-            <p className="flex items-center">
-              Add
-              <AiOutlinePlus aria-hidden="true" className="ml-1 text-xl" />
-            </p>
-          </>
-        )}
+        {trigger}
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -83,7 +71,7 @@ const AppDialog = ({ title, children, edit, order }: IAppDialogProps) => {
                   <div className="flex justify-between">
                     <Dialog.Title
                       as="h3"
-                      className="mb-2 text-lg font-medium leading-6 text-gray-300"
+                      className="mb-2 text-lg font-medium capitalize leading-6 text-gray-300"
                     >
                       {title}
                     </Dialog.Title>

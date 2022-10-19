@@ -1,5 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
+import { AiFillEdit } from 'react-icons/ai'
 
 import AppDialog from '@/components/common/AppDialog'
 import AppTable from '@/components/common/AppTable'
@@ -83,7 +84,16 @@ const Orders = () => {
       {
         header: 'Details',
         cell: (props) => (
-          <AppDialog order edit title="Order Details">
+          <AppDialog
+            edit
+            title={`order details ${props.row.original.id}`}
+            trigger={
+              <>
+                <AiFillEdit aria-hidden="true" className="text-2xl" />
+                <p className="sr-only">Order Details {props.row.original.id}</p>
+              </>
+            }
+          >
             <Order order={props.row.original} />
           </AppDialog>
         ),

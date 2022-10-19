@@ -1,6 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import Image from 'next/image'
 import { useMemo } from 'react'
+import { AiFillEdit, AiOutlinePlus } from 'react-icons/ai'
 
 import CategoryForm from '@/components/category/CategoryForm'
 import AppDialog from '@/components/common/AppDialog'
@@ -62,7 +63,16 @@ const Categories = () => {
       {
         header: 'Action',
         cell: (props) => (
-          <AppDialog edit title="Edit">
+          <AppDialog
+            edit
+            title={`Edit:- ${props.row.original.title}`}
+            trigger={
+              <>
+                <AiFillEdit aria-hidden="true" className="text-2xl" />
+                <p className="sr-only">Edit {props.row.original.title}</p>
+              </>
+            }
+          >
             <CategoryForm edit initialState={props.row.original} />
           </AppDialog>
         ),
@@ -78,7 +88,17 @@ const Categories = () => {
           <h2 className="heading2 mb-4" id="page-title">
             Categories
           </h2>
-          <AppDialog title="Add new Category">
+          <AppDialog
+            title="Add new Category"
+            trigger={
+              <>
+                <p className="flex items-center capitalize">
+                  new Category
+                  <AiOutlinePlus aria-hidden="true" className="ml-1 text-xl" />
+                </p>
+              </>
+            }
+          >
             <CategoryForm />
           </AppDialog>
         </div>
