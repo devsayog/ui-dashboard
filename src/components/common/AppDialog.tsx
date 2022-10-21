@@ -14,8 +14,17 @@ interface IAppDialogProps {
   children: ReactNode
   trigger?: JSX.Element
   edit?: boolean
+  className?: string
+  size?: string
 }
-const AppDialog = ({ title, children, edit, trigger }: IAppDialogProps) => {
+const AppDialog = ({
+  title,
+  children,
+  edit,
+  trigger,
+  className,
+  size,
+}: IAppDialogProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
@@ -32,19 +41,17 @@ const AppDialog = ({ title, children, edit, trigger }: IAppDialogProps) => {
       closeModal,
     })
   })
+  const cssClassName = `${
+    edit ? 'rounded-full p-1' : 'rounded-md py-1.5 px-3'
+  } focus bg-blue-600 text-gray-300 transition hover:scale-105 hover:text-gray-200`
   return (
     <>
-      <button
-        className={`${
-          edit ? 'rounded-full p-1' : 'rounded-md py-1.5 px-3'
-        } focus bg-blue-600 text-gray-300 transition hover:scale-105 hover:text-gray-200`}
-        onClick={openModal}
-      >
+      <button className={className || cssClassName} onClick={openModal}>
         {trigger}
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog as="div" className="relative z-[99999]" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -67,7 +74,11 @@ const AppDialog = ({ title, children, edit, trigger }: IAppDialogProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-75"
               >
-                <Dialog.Panel className="w-full max-w-2xl divide-y divide-gray-700 overflow-hidden rounded-2xl bg-slate-900 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={`w-full divide-y divide-gray-700 overflow-hidden rounded-2xl bg-slate-900 p-6 text-left align-middle shadow-xl transition-all ${
+                    size || 'max-w-2xl'
+                  }`}
+                >
                   <div className="flex justify-between">
                     <Dialog.Title
                       as="h3"

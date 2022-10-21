@@ -32,3 +32,7 @@ export type AddCardParams = {
   title: string
   listId: string
 }
+export type RemoveCardFromBoardParams = {
+  listId: string
+  cardId: string
+}

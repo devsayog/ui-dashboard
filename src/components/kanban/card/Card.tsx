@@ -2,8 +2,12 @@ import type { DraggableAttributes } from '@dnd-kit/core'
 import type { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities'
 import type { CSSProperties, Ref } from 'react'
 import React, { forwardRef } from 'react'
+import { BiEdit } from 'react-icons/bi'
+
+import AppDialog from '@/components/common/AppDialog'
 
 import type { CardType } from '../types'
+import CardInfo from './CardInfo'
 
 interface ICardPropsType {
   isDragging?: boolean
@@ -37,8 +41,14 @@ const CardContent = ({
         <p className="text-sm">
           {card.createdAt.toISOString().slice(0, 10).replaceAll('-', '/')}
         </p>
-        {/* TODO ADD CARD INFO EDIT/DELETE feature */}
-        <button>DETAILS</button>
+        <AppDialog
+          size="max-w-md"
+          edit
+          trigger={<BiEdit className="text-base" />}
+          title={`Actions :- ${card.title}`}
+        >
+          <CardInfo card={card} />
+        </AppDialog>
       </div>
     </div>
   )

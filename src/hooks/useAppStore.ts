@@ -12,6 +12,7 @@ import type {
   MoveCardParams,
   MoveCardToListParams,
   MoveListParams,
+  RemoveCardFromBoardParams,
 } from '@/components/kanban/types'
 import { initBoard, moveCard } from '@/components/kanban/utils/dndUtils'
 import { getById, insert, removeById } from '@/utils/arrayUtils'
@@ -24,6 +25,8 @@ export interface AppState {
   addCard: (params: AddCardParams) => void
   moveCard: (params: MoveCardParams) => void
   moveCardToList: (params: MoveCardToListParams) => void
+  updateCard: (params: CardType) => void
+  removeCardFromBoard: (params: RemoveCardFromBoardParams) => void
   addList: (params: string) => void
   setList: (params: ListType) => void
   moveList: (params: MoveListParams) => void
@@ -95,6 +98,21 @@ export const useAppStore = create(
           cardId,
         )
         state.listsById[toList.id]!.cards = insert(toCards, fromCard, pos)
+      })
+    },
+    updateCard(card) {
+      const cardIndex = get().listsById[card.listId]!.cards.findIndex(
+        (c) => c.id === card.id,
+      )
+      set((state) => {
+        state.listsById[card.listId]!.cards[cardIndex] = card
+      })
+    },
+    removeCardFromBoard({ listId, cardId }) {
+      set((state) => {
+        state.listsById[listId]!.cards = get().listsById[listId]!.cards.filter(
+          (card) => card.id !== cardId,
+        )
       })
     },
     removeListFromBoard(listId) {
