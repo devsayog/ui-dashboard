@@ -8,6 +8,7 @@ import type {
   ListType,
   MoveCardParams,
   MoveCardToListParams,
+  MoveListParams,
 } from '@/components/kanban/types'
 import { initBoard, moveCard } from '@/components/kanban/utils/dndUtils'
 import { getById, insert, removeById } from '@/utils/arrayUtils'
@@ -19,6 +20,7 @@ export interface AppState {
   setListsById: (params: ListsByIdType) => void
   moveCard: (params: MoveCardParams) => void
   moveCardToList: (params: MoveCardToListParams) => void
+  moveList: (params: MoveListParams) => void
 }
 
 export const useAppStore = create(
@@ -35,6 +37,12 @@ export const useAppStore = create(
     setListsById(list) {
       set((state) => {
         state.listsById = list
+      })
+    },
+    moveList({ fromIndex, toIndex }) {
+      set((state) => {
+        state.lists[fromIndex] = get().lists[toIndex]!
+        state.lists[toIndex] = get().lists[fromIndex]!
       })
     },
     moveCard(params) {

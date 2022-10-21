@@ -24,3 +24,7 @@ export type MoveCardToListParams = {
   toList: ListType
   pos: number
 }
+export type MoveListParams = {
+  fromIndex: number
+  toIndex: number
+}

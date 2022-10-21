@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
-import type { DragOverEvent, DragStartEvent } from '@dnd-kit/core'
+import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import {
   closestCenter,
   DndContext,
@@ -99,6 +99,17 @@ const Board = () => {
       ...updateParams,
     })
   }
+  const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    if (active.id in boardStore.listsById && over?.id) {
+      const activeIndex = boardStore.lists.indexOf(active.id as string)
+      const overIndex = boardStore.lists.indexOf(over.id as string)
+      boardStore.moveList({
+        fromIndex: activeIndex,
+        toIndex: overIndex,
+      })
+    }
+    setInActive()
+  }
   const handleDragCancel = () => {
     if (clonedItems) {
       boardStore.setListsById(clonedItems)
@@ -124,6 +135,7 @@ const Board = () => {
       onDragCancel={handleDragCancel}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
     >
       <div className="flex h-full overflow-x-auto">
         <div className="mb-5 flex h-full w-full flex-nowrap gap-4">
