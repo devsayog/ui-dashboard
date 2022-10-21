@@ -28,7 +28,7 @@ const CardContent = ({
   return (
     <div
       className={`${
-        portal && 'opacity-50 backdrop-blur-sm'
+        portal && 'opacity-50'
       } w-full cursor-pointer rounded bg-slate-600 p-2 text-gray-300 shadow-sm hover:bg-slate-700 hover:text-gray-200 ${dragStyle}`}
     >
       <h3 className="text-gray-200">{card.title}</h3>

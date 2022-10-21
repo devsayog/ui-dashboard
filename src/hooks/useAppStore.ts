@@ -9,6 +9,7 @@ export interface AppState {
   lists: string[]
   listsById: ListsByIdType
   initBoard: (params: ListType[]) => void
+  setListsById: (params: ListsByIdType) => void
 }
 
 export const useAppStore = create(
@@ -20,6 +21,11 @@ export const useAppStore = create(
       set((state) => {
         state.lists = ids
         state.listsById = obj
+      })
+    },
+    setListsById(list) {
+      set((state) => {
+        state.listsById = list
       })
     },
   })),
