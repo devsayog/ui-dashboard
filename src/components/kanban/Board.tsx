@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 
 import { useAppStore } from '@/hooks/useAppStore'
 
+import DraggableList from './list/DraggableList'
 import { listsData } from './mockData'
 
 const Board = () => {
@@ -14,12 +15,13 @@ const Board = () => {
   return boardStore.lists.length > 0 ? (
     <DndContext>
       <div className="flex h-full overflow-x-auto">
-        <div className="mb-5 flex h-full w-full flex-nowrap">
+        <div className="mb-5 flex h-full w-full flex-nowrap gap-4">
           <SortableContext items={boardStore.lists}>
             {boardStore.lists.map((listId) => (
-              <p key={listId} className="text-lg">
-                {listId}
-              </p>
+              <DraggableList
+                list={boardStore.listsById[listId]!}
+                key={listId}
+              />
             ))}
           </SortableContext>
         </div>
