@@ -25,6 +25,7 @@ export interface AppState {
   moveCard: (params: MoveCardParams) => void
   moveCardToList: (params: MoveCardToListParams) => void
   addList: (params: string) => void
+  setList: (params: ListType) => void
   moveList: (params: MoveListParams) => void
 }
 
@@ -52,6 +53,11 @@ export const useAppStore = create(
       }
       set((state) => {
         state.lists = get().lists.concat([list.id])
+        state.listsById[list.id] = list
+      })
+    },
+    setList(list) {
+      set((state) => {
         state.listsById[list.id] = list
       })
     },
