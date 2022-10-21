@@ -4,6 +4,7 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import type { CSSProperties, Ref } from 'react'
 import { forwardRef } from 'react'
 
+import AddCardorList from '../AddCardOrList'
 import DraggableCard from '../card/DraggableCard'
 import type { ListType } from '../types'
 
@@ -40,6 +41,7 @@ const List = forwardRef((props: IListPropsType, ref: Ref<HTMLDivElement>) => {
               {(cards || []).map((card) => (
                 <DraggableCard card={card} key={card.id} />
               ))}
+              <AddCardorList type="card" listId={props.list.id} />
             </div>
           </SortableContext>
         </div>

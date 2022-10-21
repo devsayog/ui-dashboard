@@ -1,9 +1,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
+import { v4 } from 'uuid'
 import create from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
 import type {
+  AddCardParams,
+  CardType,
   ListsByIdType,
   ListType,
   MoveCardParams,
@@ -18,8 +21,10 @@ export interface AppState {
   listsById: ListsByIdType
   initBoard: (params: ListType[]) => void
   setListsById: (params: ListsByIdType) => void
+  addCard: (params: AddCardParams) => void
   moveCard: (params: MoveCardParams) => void
   moveCardToList: (params: MoveCardToListParams) => void
+  addList: (params: string) => void
   moveList: (params: MoveListParams) => void
 }
 
@@ -39,10 +44,33 @@ export const useAppStore = create(
         state.listsById = list
       })
     },
+    addList(title) {
+      const list: ListType = {
+        id: v4(),
+        cards: [],
+        title,
+      }
+      set((state) => {
+        state.lists = get().lists.concat([list.id])
+        state.listsById[list.id] = list
+      })
+    },
     moveList({ fromIndex, toIndex }) {
       set((state) => {
         state.lists[fromIndex] = get().lists[toIndex]!
         state.lists[toIndex] = get().lists[fromIndex]!
+      })
+    },
+    addCard({ listId, title }) {
+      const card: CardType = {
+        title,
+        id: v4(),
+        createdAt: new Date(),
+        listId,
+        content: '',
+      }
+      set((state) => {
+        state.listsById[listId]?.cards.push(card)
       })
     },
     moveCard(params) {

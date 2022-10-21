@@ -28,3 +28,7 @@ export type MoveListParams = {
   fromIndex: number
   toIndex: number
 }
+export type AddCardParams = {
+  title: string
+  listId: string
+}

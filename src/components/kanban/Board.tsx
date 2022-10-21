@@ -19,6 +19,7 @@ import { createPortal } from 'react-dom'
 
 import { useAppStore } from '@/hooks/useAppStore'
 
+import AddCardorList from './AddCardOrList'
 import Card from './card/Card'
 import DraggableList from './list/DraggableList'
 import List from './list/List'
@@ -167,6 +168,9 @@ const Board = () => {
               />
             ))}
           </SortableContext>
+          <div className="w-72 shrink-0 px-2">
+            <AddCardorList type="list" />
+          </div>
         </div>
       </div>
       {typeof window !== 'undefined'
@@ -188,7 +192,7 @@ const Board = () => {
         : null}
     </DndContext>
   ) : (
-    <p className="text2xl text-red-400">No Board</p>
+    <p className="text-2xl text-red-400">No Board</p>
   )
 }
 
