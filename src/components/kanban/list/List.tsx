@@ -1,15 +1,36 @@
 import type { DraggableAttributes } from '@dnd-kit/core'
 import type { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { Menu } from '@headlessui/react'
 import type { CSSProperties, Ref } from 'react'
 import { forwardRef, useRef } from 'react'
+import { AiFillDelete } from 'react-icons/ai'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
+import AppMenu from '@/components/common/AppMenu'
 import { useAppStore } from '@/hooks/useAppStore'
 
 import AddCardorList from '../AddCardOrList'
 import DraggableCard from '../card/DraggableCard'
 import type { ListType } from '../types'
 import Editable from './EditableTitle'
+
+const MenuList = ({ deleteList }: { deleteList: () => void }) => {
+  return (
+    <Menu.Item>
+      {({ active }) => (
+        <button
+          onClick={deleteList}
+          className={`inline-flex w-full items-center rounded-md p-2 text-base ${
+            active ? 'bg-slate-800 text-gray-200' : ''
+          }`}
+        >
+          Delete List <AiFillDelete className="ml-2" />
+        </button>
+      )}
+    </Menu.Item>
+  )
+}
 
 interface IListPropsType {
   height?: number
@@ -35,6 +56,7 @@ const List = forwardRef((props: IListPropsType, ref: Ref<HTMLDivElement>) => {
     const updatedList = { ...props.list, title: text || props.list.title }
     boardStore.setList(updatedList)
   }
+  const deleteList = () => boardStore.removeListFromBoard(props.list.id)
   return props.list ? (
     <div
       ref={ref}
@@ -65,7 +87,9 @@ const List = forwardRef((props: IListPropsType, ref: Ref<HTMLDivElement>) => {
                     className="m-0 w-full rounded border bg-slate-600 p-0 text-lg font-medium text-gray-200"
                   />
                 </Editable>
-                <p>MENU</p>
+                <AppMenu trigger={<BsThreeDotsVertical className="text-xl" />}>
+                  <MenuList deleteList={deleteList} />
+                </AppMenu>
               </div>
               {(cards || []).map((card) => (
                 <DraggableCard card={card} key={card.id} />

@@ -27,6 +27,7 @@ export interface AppState {
   addList: (params: string) => void
   setList: (params: ListType) => void
   moveList: (params: MoveListParams) => void
+  removeListFromBoard: (params: string) => void
 }
 
 export const useAppStore = create(
@@ -94,6 +95,12 @@ export const useAppStore = create(
           cardId,
         )
         state.listsById[toList.id]!.cards = insert(toCards, fromCard, pos)
+      })
+    },
+    removeListFromBoard(listId) {
+      set((state) => {
+        delete state.listsById[listId]
+        state.lists = get().lists.filter((id) => id !== listId)
       })
     },
   })),
