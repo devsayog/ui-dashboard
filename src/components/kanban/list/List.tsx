@@ -4,6 +4,7 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import type { CSSProperties, Ref } from 'react'
 import { forwardRef } from 'react'
 
+import DraggableCard from '../card/DraggableCard'
 import type { ListType } from '../types'
 
 interface IListPropsType {
@@ -36,8 +37,8 @@ const List = forwardRef((props: IListPropsType, ref: Ref<HTMLDivElement>) => {
           <SortableContext items={cards} strategy={verticalListSortingStrategy}>
             <div className="w-full p-2">
               <p className="text-xl">{props.list.title}</p>
-              {cards.map((card) => (
-                <p key={card.id}>{card.title}</p>
+              {(cards || []).map((card) => (
+                <DraggableCard card={card} key={card.id} />
               ))}
             </div>
           </SortableContext>
