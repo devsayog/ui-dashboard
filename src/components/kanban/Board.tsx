@@ -1,8 +1,12 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
-import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
+import type {
+  CollisionDetection,
+  DragEndEvent,
+  DragOverEvent,
+  DragStartEvent,
+} from '@dnd-kit/core'
 import {
-  closestCenter,
   DndContext,
   DragOverlay,
   MeasuringStrategy,
@@ -10,7 +14,7 @@ import {
   useSensor,
 } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { useAppStore } from '@/hooks/useAppStore'
@@ -20,6 +24,7 @@ import DraggableList from './list/DraggableList'
 import List from './list/List'
 import { listsData } from './mockData'
 import type { CardType, ListsByIdType } from './types'
+import { customCollisionStrategy } from './utils/customCollisionStrategy'
 import { findCardById, findContainer, getNewIndex } from './utils/dndUtils'
 
 const Board = () => {
@@ -30,6 +35,8 @@ const Board = () => {
   const [activeId, setActiveId] = useState<string | null>(null)
   const [activeCard, setActiveCard] = useState<CardType | null>(null)
   const [clonedItems, setClonedItems] = useState<ListsByIdType | null>(null)
+  const lastOverId = useRef<string | null>(null)
+  const recentlyMovedToNewContainer = useRef(false)
 
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
@@ -45,6 +52,19 @@ const Board = () => {
   const isList = (id: string) => {
     return boardStore.lists.includes(id)
   }
+  const collisionDetectionStrategy = useCallback<CollisionDetection>(
+    (args) => {
+      const opts = {
+        activeId,
+        items: boardStore.listsById,
+        lastOverId,
+        recentlyMovedToNewContainer,
+      }
+
+      return customCollisionStrategy(args, opts)
+    },
+    [activeId, boardStore.listsById],
+  )
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e
@@ -81,7 +101,7 @@ const Board = () => {
     )
 
     const newIndex = getNewIndex(overListCardIndex, over, active)
-
+    recentlyMovedToNewContainer.current = true
     const updateParams = {
       cardId: active.id as string,
       pos: newIndex,
@@ -130,7 +150,7 @@ const Board = () => {
   return boardStore.lists.length > 0 ? (
     <DndContext
       sensors={[mouseSensor]}
-      collisionDetection={closestCenter}
+      collisionDetection={collisionDetectionStrategy}
       measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       onDragCancel={handleDragCancel}
       onDragStart={handleDragStart}
