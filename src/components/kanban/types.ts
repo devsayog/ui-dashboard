@@ -13,3 +13,14 @@ export type ListType = {
 export type ListsByIdType = {
   [listId: string]: ListType
 }
+export type MoveCardParams = {
+  cardId: string
+  list: ListType
+  pos: number
+}
+export type MoveCardToListParams = {
+  cardId: string
+  fromList: ListType
+  toList: ListType
+  pos: number
+}

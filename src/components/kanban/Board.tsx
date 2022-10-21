@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
-import type { DragStartEvent } from '@dnd-kit/core'
+import type { DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import {
   closestCenter,
   DndContext,
@@ -20,7 +20,7 @@ import DraggableList from './list/DraggableList'
 import List from './list/List'
 import { listsData } from './mockData'
 import type { CardType, ListsByIdType } from './types'
-import { findCardById } from './utils/dndUtils'
+import { findCardById, findContainer, getNewIndex } from './utils/dndUtils'
 
 const Board = () => {
   const boardStore = useAppStore()
@@ -56,7 +56,49 @@ const Board = () => {
     }
     setClonedItems(boardStore.listsById)
   }
+  const handleDragOver = ({ active, over }: DragOverEvent) => {
+    const overId = over?.id
+    if (over === null || isList(active.id as string)) {
+      return
+    }
+    const [overListId, activeListId] = [
+      findContainer(overId as string, boardStore.listsById),
+      findContainer(active.id as string, boardStore.listsById),
+    ]
 
+    if (!overListId || !activeListId) {
+      return
+    }
+    const overDifferentList = activeListId !== overListId
+    const overCurrentList = activeListId === overListId
+
+    if (!(overCurrentList || overDifferentList)) {
+      return
+    }
+    const overList = boardStore.listsById[overListId]!
+    const overListCardIndex = overList.cards.findIndex(
+      (card) => card.id === overId,
+    )
+
+    const newIndex = getNewIndex(overListCardIndex, over, active)
+
+    const updateParams = {
+      cardId: active.id as string,
+      pos: newIndex,
+    }
+    if (overCurrentList) {
+      boardStore.moveCard({
+        list: boardStore.listsById[activeListId]!,
+        ...updateParams,
+      })
+      return
+    }
+    boardStore.moveCardToList({
+      fromList: boardStore.listsById[activeListId]!,
+      toList: overList!,
+      ...updateParams,
+    })
+  }
   const handleDragCancel = () => {
     if (clonedItems) {
       boardStore.setListsById(clonedItems)
@@ -81,6 +123,7 @@ const Board = () => {
       measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       onDragCancel={handleDragCancel}
       onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
     >
       <div className="flex h-full overflow-x-auto">
         <div className="mb-5 flex h-full w-full flex-nowrap gap-4">
