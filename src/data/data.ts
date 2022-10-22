@@ -4,7 +4,7 @@ import {
   BsPeopleFill,
   BsTabletLandscape,
 } from 'react-icons/bs'
-import { FaClipboard, FaUserSecret } from 'react-icons/fa'
+import { FaClipboard } from 'react-icons/fa'
 import { GrCycle } from 'react-icons/gr'
 import { ImCart } from 'react-icons/im'
 import { IoIosPeople } from 'react-icons/io'
@@ -2921,10 +2921,6 @@ export const navLinks = [
         name: 'customers',
         Icon: BsPeopleFill,
       },
-      {
-        name: 'employees',
-        Icon: FaUserSecret,
-      },
     ],
   },
   {
@@ -2937,31 +2933,6 @@ export const navLinks = [
       {
         name: 'calendar',
         Icon: BsFillCalendarCheckFill,
-      },
-    ],
-  },
-  {
-    title: 'management',
-    links: [
-      {
-        name: 'categories',
-        Icon: AiFillAppstore,
-      },
-      {
-        name: 'products',
-        Icon: ImCart,
-      },
-      {
-        name: 'orders',
-        Icon: MdCategory,
-      },
-      {
-        name: 'customers',
-        Icon: BsPeopleFill,
-      },
-      {
-        name: 'employees',
-        Icon: FaUserSecret,
       },
     ],
   },
