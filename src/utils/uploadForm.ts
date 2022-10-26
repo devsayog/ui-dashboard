@@ -25,7 +25,6 @@ export const formUpload = async <T>({
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data)
-      console.log({ ...data, image })
       toast.success(
         initialState ? 'Successfully Edited' : 'Successfully added new item',
       )

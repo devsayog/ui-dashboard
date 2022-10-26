@@ -10,7 +10,7 @@ interface ISidenavProps {
 }
 const Sidenav = ({ drawer, close }: ISidenavProps) => {
   return (
-    <div className="h-screen overflow-y-auto">
+    <div className="fixed inset-y-0 left-0 h-full w-60 overflow-y-auto bg-slate-900">
       <div aria-label="sidebar" className="py-8 px-3">
         {drawer && (
           <div className="mb-2 flex justify-end">

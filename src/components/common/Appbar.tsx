@@ -7,6 +7,7 @@ import { MdNotificationsActive } from 'react-icons/md'
 import { v4 } from 'uuid'
 
 import { notificationsData } from '@/data/data'
+import { useGetScreenSize } from '@/hooks/useGetScreenWidth'
 
 import AppMenu from './AppMenu'
 import Drawer from './Drawer'
@@ -77,6 +78,8 @@ const MenuList = () => {
 
 const Appbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const isSm = useGetScreenSize(1024)
+
   return (
     <>
       <div className="fixed inset-x-0 top-0 z-40 h-16 border-b border-b-gray-700 bg-slate-900">
@@ -128,7 +131,9 @@ const Appbar = () => {
           </div>
         </nav>
       </div>
-      <Drawer open={isDrawerOpen} handleChangeDrawer={setIsDrawerOpen} />
+      {isSm && (
+        <Drawer open={isDrawerOpen} handleChangeDrawer={setIsDrawerOpen} />
+      )}
     </>
   )
 }
