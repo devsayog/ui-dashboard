@@ -47,4 +47,7 @@
   .table__row-body {
     @apply text-sm text-gray-300 transition even:bg-slate-800/40 hover:bg-slate-800/70 md:text-sm;
   }
+  .calendarModal__btn {
+    @apply inline-flex justify-center rounded-md border border-transparent px-4 py-2 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
 }

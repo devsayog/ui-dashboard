@@ -90,7 +90,7 @@ const AppDialog = ({
                       onClick={closeModal}
                       className="focus -mt-2 grid h-8 w-8 place-content-center rounded-full bg-red-500/40 p-1 text-white transition hover:bg-red-500"
                     >
-                      <AiOutlineClose className="h-6 w-6" />
+                      <AiOutlineClose className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
                   {mapped}
