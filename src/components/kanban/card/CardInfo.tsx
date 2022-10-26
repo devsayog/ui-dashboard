@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Input, SumbitBtn } from '@/components/common/FormsElem'
+import { Input, SumbitBtn, TextArea } from '@/components/common/FormsElem'
 import { useAppStore } from '@/hooks/useAppStore'
 
 import type { CardType } from '../types'
@@ -47,26 +47,12 @@ const CardInfo = ({
           placeholder="Enter title"
           type="text"
         />
-        <label className="my-2 block font-medium capitalize" htmlFor="content">
-          Description
-        </label>
-        <textarea
+        <TextArea
           {...register('content')}
-          rows={5}
-          aria-invalid={errors.content ? true : undefined}
-          aria-describedby="content-error"
-          className="w-full rounded-md border-gray-500 bg-gray-700/10 py-1.5 px-2 text-gray-300 disabled:opacity-40"
-          id="content"
+          error={errors.content}
+          label="Description"
+          placeholder="Enter event details"
         />
-        {errors.content && (
-          <p
-            role="alert"
-            id="content-error"
-            className="mt-1 text-sm tracking-wide text-red-400"
-          >
-            {errors.content.message}
-          </p>
-        )}
         <div className="mt-4">
           <SumbitBtn text="Update Card" />
           <button

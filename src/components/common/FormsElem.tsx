@@ -9,12 +9,16 @@ interface InputProps {
   error: FieldError | undefined
   step?: string
   disabled?: boolean
+  light?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { label, error, type, ...props },
+  { label, error, light, type, ...props },
   ref,
 ) {
+  const lightStyles = !light
+    ? 'border-gray-500 bg-gray-700/10 text-gray-300'
+    : 'border-gray-300 bg-gray-200/20 text-gray-700'
   return (
     <>
       <label className="my-2 block font-medium capitalize" htmlFor={label}>
@@ -23,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       <input
         aria-invalid={error?.message ? true : undefined}
         aria-describedby={`${label}-error`}
-        className="w-full rounded-md border-gray-500 bg-gray-700/10 py-1.5 px-2 text-gray-300 disabled:opacity-40"
+        className={`w-full rounded-md py-1.5 px-2 disabled:opacity-40 ${lightStyles}`}
         id={label}
         type={type}
         ref={ref}
@@ -41,6 +45,45 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     </>
   )
 })
+interface TextAreaProps {
+  label: string
+  placeholder?: string
+  error: FieldError | undefined
+  disabled?: boolean
+  light?: boolean
+}
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  function TextArea({ label, light, error, ...props }, ref) {
+    const lightStyles = !light
+      ? 'border-gray-500 bg-gray-700/10 text-gray-300'
+      : 'border-gray-300 bg-gray-200/20 text-gray-700'
+    return (
+      <>
+        <label className="my-2 block font-medium capitalize" htmlFor={label}>
+          {label}
+        </label>
+        <textarea
+          aria-invalid={error?.message ? true : undefined}
+          aria-describedby={`${label}-error`}
+          className={`w-full rounded-md py-1.5 px-2 disabled:opacity-40 ${lightStyles}`}
+          rows={3}
+          id={label}
+          ref={ref}
+          {...props}
+        />
+        {error?.message && (
+          <p
+            role="alert"
+            id={`${label}-error`}
+            className="mt-1 text-sm tracking-wide text-red-400"
+          >
+            {error?.message}
+          </p>
+        )}
+      </>
+    )
+  },
+)
 export const FileInput = ({
   onChange,
   error,
