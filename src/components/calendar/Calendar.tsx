@@ -14,6 +14,8 @@ import { useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { v4 } from 'uuid'
 
+import Day from './Day'
+
 const Calendar = () => {
   const today = startOfToday()
   const [currentMonth, setCurrentMonth] = useState(format(today, 'MMMM-yyyy'))
@@ -85,9 +87,7 @@ const Calendar = () => {
         <div className="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
           <div className="grid w-full grid-flow-row grid-cols-7 gap-px">
             {days.map((day) => (
-              <p key={v4()} className="h-24 bg-white">
-                {format(day.date, 'd')}
-              </p>
+              <Day {...day} key={v4()} />
             ))}
           </div>
         </div>
