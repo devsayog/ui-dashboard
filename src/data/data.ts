@@ -14,6 +14,29 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { getRandomNumber } from '@/utils/getRandomNumber'
 
+export const notificationsData = [
+  {
+    image: 'https://randomuser.me/api/portraits/women/65.jpg',
+    message: 'Added new Product',
+    time: new Date(),
+  },
+  {
+    image: 'https://randomuser.me/api/portraits/women/60.jpg',
+    message: 'created a new todo task',
+    time: new Date(),
+  },
+  {
+    image: 'https://randomuser.me/api/portraits/men/89.jpg',
+    message: 'New Payment received',
+    time: new Date(),
+  },
+  {
+    image: 'https://randomuser.me/api/portraits/women/92.jpg',
+    message: 'Jolly completed tasks',
+    time: new Date(),
+  },
+]
+
 export const ordersData = [
   {
     id: uuidv4(),
