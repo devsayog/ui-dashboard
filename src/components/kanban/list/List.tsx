@@ -87,7 +87,12 @@ const List = forwardRef((props: IListPropsType, ref: Ref<HTMLDivElement>) => {
                     className="m-0 w-full rounded border bg-slate-600 p-0 text-lg font-medium text-gray-200"
                   />
                 </Editable>
-                <AppMenu trigger={<BsThreeDotsVertical className="text-xl" />}>
+                <AppMenu
+                  right="right-0"
+                  marginTop="mt-2"
+                  width="w-52"
+                  trigger={<BsThreeDotsVertical className="text-xl" />}
+                >
                   <MenuList deleteList={deleteList} />
                 </AppMenu>
               </div>
