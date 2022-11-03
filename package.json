@@ -30,6 +30,7 @@
     "react-hook-form": "^7.36.1",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
+    "sharp": "^0.31.1",
     "uuid": "^9.0.0",
     "zod": "^3.19.1",
     "zustand": "^4.1.2"
